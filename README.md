@@ -32,7 +32,7 @@ LMS_Project/
 │   │   │           │   └── UserService.java
 │   │   │           │
 │   │   │           ├── model/                # Entity and DTO classes
-│   │   │           │   ├── User.java         # Base class for Student, Instructor, Admin
+│   │   │           │   ├── User.java         
 │   │   │           │   ├── Student.java
 │   │   │           │   ├── Instructor.java
 │   │   │           │   ├── Admin.java
@@ -48,14 +48,12 @@ LMS_Project/
 │   │   │           │   ├── AssessmentRepository.java
 │   │   │           │   └── NotificationRepository.java
 │   │   │           │
-│   │   │           ├── util/                 # Utility classes (e.g., common helpers)
-│   │   │           │   └── EmailService.java
 │   │   │           │
-│   │   │           └── LmsApplication.java   # Main Spring Boot application
+│   │   │           └── LMSApplication.java   # Main Spring Boot application
 │   │   │
 │   │   └── resources/
 │   │       ├── application.properties            # Spring Boot configuration
-│   │       └── scratch.sql                        # Initial SQL schema
+│   │       └── scratch.sql                        # SQL schema
 │   │    
 │   │
 │   ├── test/                                     # Unit and integration tests
