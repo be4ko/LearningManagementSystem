@@ -5,6 +5,70 @@ This Java-Based Learning Management System (LMS) is a web-based application desi
 and organization of online courses, assessments, and performance tracking. It provides a comprehensive solution for students, instructors, 
 and admins to interact with the platform effectively, fulfilling specific user needs.
 
+## Project Structure
+```
+LMS_Project/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │       └── LMS/
+│   │   │           ├── config/               # Configuration classes (Database, Security, etc.)
+│   │   │           │   ├── DatabaseConfig.java
+│   │   │           │   ├── SecurityConfig.java
+│   │   │           │   └── SwaggerConfig.java
+│   │   │           │
+│   │   │           ├── controller/           # REST Controllers for handling HTTP requests
+│   │   │           │   ├── AuthController.java
+│   │   │           │   ├── CourseController.java
+│   │   │           │   ├── NotificationController.java
+│   │   │           │   ├── AssessmentController.java
+│   │   │           │   └── UserController.java
+│   │   │           │
+│   │   │           ├── service/              # Business logic layer
+│   │   │           │   ├── AuthService.java
+│   │   │           │   ├── CourseService.java
+│   │   │           │   ├── NotificationService.java
+│   │   │           │   ├── AssessmentService.java
+│   │   │           │   └── UserService.java
+│   │   │           │
+│   │   │           ├── model/                # Entity and DTO classes
+│   │   │           │   ├── User.java         # Base class for Student, Instructor, Admin
+│   │   │           │   ├── Student.java
+│   │   │           │   ├── Instructor.java
+│   │   │           │   ├── Admin.java
+│   │   │           │   ├── Course.java
+│   │   │           │   ├── Assessment.java
+│   │   │           │   ├── Quiz.java
+│   │   │           │   ├── Assignment.java
+│   │   │           │   └── Notification.java
+│   │   │           │
+│   │   │           ├── repository/           # DAO/Repository layer for database interactions
+│   │   │           │   ├── UserRepository.java
+│   │   │           │   ├── CourseRepository.java
+│   │   │           │   ├── AssessmentRepository.java
+│   │   │           │   └── NotificationRepository.java
+│   │   │           │
+│   │   │           ├── util/                 # Utility classes (e.g., common helpers)
+│   │   │           │   └── EmailService.java
+│   │   │           │
+│   │   │           └── LmsApplication.java   # Main Spring Boot application
+│   │   │
+│   │   └── resources/
+│   │       ├── application.properties            # Spring Boot configuration
+│   │       └── scratch.sql                        # Initial SQL schema
+│   │    
+│   │
+│   ├── test/                                     # Unit and integration tests
+│   │   └── java/
+│   │         └── LMS/
+│   │             ├── AuthServiceTest.java
+│   │             ├── UserRepositoryTest.java
+│   │             └── CourseControllerTest.java
+│   │
+├── pom.xml                                       # Maven dependencies
+└── README.md                                     # Project documentation
+```
+
 ## Key Features
 1. User Management
 - Admin Features:
