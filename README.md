@@ -31,7 +31,7 @@ LMS_Project/
 │   │   │           │   ├── AssessmentService.java
 │   │   │           │   └── UserService.java
 │   │   │           │
-│   │   │           ├── model/                # Entity and DTO classes
+│   │   │           ├── model/                
 │   │   │           │   ├── User.java         
 │   │   │           │   ├── Student.java
 │   │   │           │   ├── Instructor.java
@@ -42,21 +42,21 @@ LMS_Project/
 │   │   │           │   ├── Assignment.java
 │   │   │           │   └── Notification.java
 │   │   │           │
-│   │   │           ├── repository/           # DAO/Repository layer for database interactions
+│   │   │           ├── repository/           # layer for database interactions
 │   │   │           │   ├── UserRepository.java
 │   │   │           │   ├── CourseRepository.java
 │   │   │           │   ├── AssessmentRepository.java
 │   │   │           │   └── NotificationRepository.java
 │   │   │           │
 │   │   │           │
-│   │   │           └── LMSApplication.java   # Main Spring Boot application
+│   │   │           └── LMSApplication.java
 │   │   │
 │   │   └── resources/
-│   │       ├── application.properties            # Spring Boot configuration
+│   │       ├── application.properties            
 │   │       └── scratch.sql                        # SQL schema
 │   │    
 │   │
-│   ├── test/                                     # Unit and integration tests
+│   ├── test/                                    
 │   │   └── java/
 │   │         └── LMS/
 │   │             ├── AuthServiceTest.java
@@ -64,7 +64,7 @@ LMS_Project/
 │   │             └── CourseControllerTest.java
 │   │
 ├── pom.xml                                       # Maven dependencies
-└── README.md                                     # Project documentation
+└── README.md                                     
 ```
 
 ## Key Features
