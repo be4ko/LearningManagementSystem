@@ -6,17 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "courses")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int courseID;
     @Column(nullable = false) // Ensure course name cannot be null
     protected String courseTitle;
-    protected int courseDuration;
-    @ManyToOne
-    @JoinColumn(name = "student_id") // Foreign key in the courses table
-    private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "insturctor_id") // Foreign key in the courses table
+    @Column(nullable = true) // Ensure course name cannot be null
+    protected int courseDuration;
+
+    @ManyToOne // Each course is associated with one instructor
+    @JoinColumn(name = "instructor_id") // Foreign key in the courses table
     private Instructor instructor;
 
 

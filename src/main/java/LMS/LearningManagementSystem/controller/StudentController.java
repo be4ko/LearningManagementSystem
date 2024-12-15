@@ -15,17 +15,19 @@ import java.util.Optional;
 @RequestMapping(path= "/students")
 public class StudentController {
     protected final StudentService studentService;
+    private final StudentRepository studentRepository;
+    private final CourseRepository courseRepository;
 
-   @Autowired
-    public StudentController(StudentService studentService) {
+
+    @Autowired
+    public StudentController(StudentService studentService,StudentRepository studentRepository,CourseRepository courseRepository ) {
         this.studentService = studentService;
+        this.studentRepository = studentRepository;
+        this.courseRepository = courseRepository;
     }
 
-    @Autowired
-    private StudentRepository studentRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
 
     @GetMapping(path = "/get-students")
     public List<Student> getStudents(){

@@ -1,8 +1,6 @@
 package LMS.LearningManagementSystem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "instructors")
 public class Instructor extends User{
-    @OneToMany(mappedBy = "instructor")
+    @OneToMany(mappedBy = "instructor") // One instructor can have multiple courses    private final List<Course> createdCourses;
     private final List<Course> createdCourses;
 
     public Instructor(int id, String name, String email, String password) {
