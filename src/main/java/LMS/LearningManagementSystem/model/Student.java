@@ -18,7 +18,7 @@ public class Student extends User{
         super(id, name, email, password);
     }
     protected Student() {
-        super(); // Hibernate requires a no-arg constructor
+        super();
     }
 
     public Student(int id, String name, String email, String password, List<Course> courses) {

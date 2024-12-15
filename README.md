@@ -12,7 +12,7 @@ LMS_Project/
 │   ├── main/
 │   │   ├── java/
 │   │   │       └── LMS/
-│   │   │           ├── config/               # Configuration classes (Database, Security, etc.)
+│   │   │           ├── configuration/               # Configuration classes (Database, Security, etc.)
 │   │   │           │   ├── DatabaseConfig.java
 │   │   │           │   ├── SecurityConfig.java
 │   │   │           │   └── SwaggerConfig.java
@@ -20,16 +20,18 @@ LMS_Project/
 │   │   │           ├── controller/           # REST Controllers for handling HTTP requests
 │   │   │           │   ├── AuthController.java
 │   │   │           │   ├── CourseController.java
-│   │   │           │   ├── NotificationController.java
-│   │   │           │   ├── AssessmentController.java
-│   │   │           │   └── UserController.java
+│   │   │           │   └── StudentController.java
+│   │   │           │   └── InstructorController.java
+│   │   │           │   └── AdminController.java
 │   │   │           │
 │   │   │           ├── service/              # Business logic layer
 │   │   │           │   ├── AuthService.java
 │   │   │           │   ├── CourseService.java
 │   │   │           │   ├── NotificationService.java
 │   │   │           │   ├── AssessmentService.java
-│   │   │           │   └── UserService.java
+│   │   │           │   └── StudentService.java
+│   │   │           │   └── InsturctorService.java
+│   │   │           │   └── AdminService.java
 │   │   │           │
 │   │   │           ├── model/                
 │   │   │           │   ├── User.java         
@@ -47,6 +49,9 @@ LMS_Project/
 │   │   │           │   ├── CourseRepository.java
 │   │   │           │   ├── AssessmentRepository.java
 │   │   │           │   └── NotificationRepository.java
+│   │   │           │   └── StudentRepository.java
+│   │   │           │   └── InstructorRepository.java
+│   │   │           │   └── AdminRepository.java
 │   │   │           │
 │   │   │           │
 │   │   │           └── LMSApplication.java
