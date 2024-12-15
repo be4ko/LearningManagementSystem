@@ -53,7 +53,7 @@ LMS_Project/
 │   │   │
 │   │   └── resources/
 │   │       ├── application.properties            
-│   │       └── scratch.sql                        # SQL schema
+│   │       └── schema.sql                        
 │   │    
 │   │
 │   ├── test/                                    
