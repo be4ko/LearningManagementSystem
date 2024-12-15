@@ -28,7 +28,6 @@ public class StudentController {
 
 
     @Autowired
-
     @GetMapping(path = "/get-students")
     public List<Student> getStudents(){
         return studentService.getStudents();

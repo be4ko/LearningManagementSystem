@@ -18,7 +18,7 @@ public class Course {
     private Instructor instructor;
 
 
-    Course(int courseID, String courseTitle, int courseDuration ){
+    public Course(int courseID, String courseTitle, int courseDuration ){
         this.courseID = courseID;
         this.courseTitle = courseTitle;
         this.courseDuration = courseDuration ;
@@ -30,6 +30,10 @@ public class Course {
 
     public void setCourseDuration(int courseDuration) {
         this.courseDuration = courseDuration;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public void setCourseTitle(String courseTitle) {

@@ -17,11 +17,11 @@ public class Admin extends User {
     }
 
     public void addCourseToStudent(Student student, Course course) {
-        student.addCourse(course); // Maintains bidirectional relationship
+        student.addCourse(course);
     }
 
     public void removeCourseFromStudent(Student student, Course course) {
-        student.removeCourse(course); // Properly handles relationship
+        student.removeCourse(course);
     }
 
     @Override

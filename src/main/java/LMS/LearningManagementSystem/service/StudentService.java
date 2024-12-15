@@ -19,6 +19,5 @@ public class StudentService {
 
     public List<Student> getStudents(){ // مفروض ترجع من الDatabase
         return studentRepository.findAll();
-
     }
 }
