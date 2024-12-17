@@ -31,7 +31,6 @@ and organization of online courses, assessments, and performance tracking.
 - Role-specific notifications for enrollment confirmations, grades, and updates.  
 - Option to filter unread notifications.
 
----
 ## 🛠️ Technical Stack  
 
 ### Backend  
@@ -40,7 +39,9 @@ and organization of online courses, assessments, and performance tracking.
 
 ### Testing and Security   
 - **Testing**: JUnit for unit testing.  
-- **Security**: JWT. 
+- **Security**: JWT.
+
+---
 
 ## Project Structure
 ```
