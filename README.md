@@ -1,9 +1,46 @@
 # Learning Management System (LMS)
 
-## Overview
 This Java-Based Learning Management System (LMS) is a web-based application designed to streamline the management 
-and organization of online courses, assessments, and performance tracking. It provides a comprehensive solution for students, instructors, 
-and admins to interact with the platform effectively, fulfilling specific user needs.
+and organization of online courses, assessments, and performance tracking.
+
+## 🌟 Key Features  
+
+### 1. User Management  
+- **Roles**: Admin, Instructor, Student.  
+- **Admin**: Manages users, courses, and system settings.  
+- **Instructor**: Creates and manages courses, assignments, quizzes, grades, and student enrollments.  
+- **Student**: Enrolls in courses, accesses materials, submits assignments, and views grades.  
+- **Additional Features**:  
+  - Role-based registration and login.  
+  - Profile management for all users.  
+
+### 2. Course Management  
+- **Course Creation**: Add titles, descriptions, durations, and media (videos, PDFs, etc.).  
+- **Enrollment**: Students can browse and enroll in courses; admins and instructors can manage enrollments.  
+- **Attendance**: OTP-based attendance tracking for lessons.  
+
+### 3. Assessments & Grading  
+- **Quizzes**: MCQ, true/false, and short-answer questions, with randomized selection and question banks.  
+- **Assignments**: Students can upload files for review and feedback.  
+- **Grading**: Automated quiz feedback and manual assignment grading.  
+
+### 4. Performance Tracking  
+- Track progress, attendance, and grades for individual students.  
+
+### 5. Notifications  
+- Role-specific notifications for enrollment confirmations, grades, and updates.  
+- Option to filter unread notifications.
+
+---
+## 🛠️ Technical Stack  
+
+### Backend  
+- **Java** with Spring Boot for RESTful APIs.  
+- **Database**: PostgreSQL.  
+
+### Testing and Security   
+- **Testing**: JUnit for unit testing.  
+- **Security**: JWT. 
 
 ## Project Structure
 ```
@@ -72,55 +109,11 @@ LMS_Project/
 └── README.md                                     
 ```
 
-## Key Features
-1. User Management
-- Admin Features:
-    - Manages system settings.
-    - Creates and manages users.
-    - Oversees courses.
-- Instructor Features:
-    - Creates and manages course content.
-    - Adds assignments and quizzes.
-    - Grades students and manages enrollments.
-Student Features:
-    - Enrolls in courses and accesses course materials.
-    - Submits assignments and takes quizzes.
-    - Views grades and progress.
-2. Course Management
-- Course Creation:
-    - Instructors create courses with titles, descriptions, and media uploads (videos, PDFs, etc.).
-    - Courses consist of multiple lessons for students.
-- Enrollment Management:
-    - Students view and enroll in courses.
-    - Admins and instructors monitor enrollments.
-- Attendance Management:
-    - OTP-based lesson attendance for students.
-3. Assessment & Grading
-- Quizzes:
-    - Multiple question types (MCQ, true/false, short answers).
-    - Questions bank for randomized selection.
-- Assignments:
-    - Students upload submissions for instructor review.
-- Grading:
-    - Automated feedback for quizzes.
-- Manual grading and feedback for assignments.
-4. Performance Tracking
-5. Notifications
-- Student Progress:
-    - Tracks quiz scores, assignments, and attendance.
-    - Monitored by instructors.
-
-## Technical Stack
-- Backend: Java with Spring Boot for RESTful APIs.
-- Database: MySQL, PostgreSQL, or SQLite.
-- Testing: JUnit for unit testing.
-- Authentication & Authorization: Spring Security.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## contributors
+## 🤝Contributors
 - Mariam Assem
 - Mina Emad
 - Mahmoud Ali
 - Reem Ahmed
+
+## 📜License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
