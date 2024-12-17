@@ -18,12 +18,12 @@ public class AdminController {
         adminService.addStudent(id, name, email, password);
         return "Student added successfully!";
     }
-    @PostMapping("/add-course")
+    @PostMapping("/add-course-to-student")
     public String addCourseToStudent(@RequestParam int studentId, @RequestParam int courseId) {
         return "Course added successfully to the student!";
     }
 
-    @PostMapping("/remove-course")
+    @PostMapping("/remove-course-from-student")
     public String removeCourseFromStudent(@RequestParam int studentId, @RequestParam int courseId) {
         return "Course removed successfully from the student!";
     }

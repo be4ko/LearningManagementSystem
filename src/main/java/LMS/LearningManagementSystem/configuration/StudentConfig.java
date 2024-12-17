@@ -9,7 +9,7 @@ import java.util.List;
 
 @Configuration
 public class StudentConfig {
-    @Bean
+    @Bean (name = "studentCommandLineRunner")
     CommandLineRunner commandLineRunner(StudentRepository repository){
         return args -> {
                 Student beeko = new Student(2020,"Beeko","beeko280@gmail","123123");

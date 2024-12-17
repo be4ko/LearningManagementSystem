@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 abstract class User {
 
    @Id
-//    @GeneratedValue(
-//            strategy = GenerationType.IDENTITY
+//    @GeneratedValue( GenerationType.IDENTITY
 //    )
     private int id;
     @Column(nullable = false)
@@ -58,8 +57,6 @@ abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public abstract Role getRole();
 
 
 }

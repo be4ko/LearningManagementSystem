@@ -16,16 +16,4 @@ public class Admin extends User {
         super(id, name, email, password);
     }
 
-    public void addCourseToStudent(Student student, Course course) {
-        student.addCourse(course);
-    }
-
-    public void removeCourseFromStudent(Student student, Course course) {
-        student.removeCourse(course);
-    }
-
-    @Override
-    public Role getRole() {
-        return Role.Admin;
-    }
 }

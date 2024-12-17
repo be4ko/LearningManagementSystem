@@ -32,9 +32,4 @@ public class Student extends User{
     public void removeCourse(Course course){                    // يجب التعديل بعد إضافة كلاس الكورس
         this.courses.remove(course);
     }
-
-    @Override
-    public Role getRole(){
-        return Role.Student;
-    }
 }

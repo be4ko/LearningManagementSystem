@@ -15,22 +15,8 @@ public class Instructor extends User{
         super(id, name, email, password);
         this.createdCourses = new ArrayList<>();
     }
-
     protected Instructor() {
         super();
         this.createdCourses = new ArrayList<>();
-    }
-    public List<Course> getCreatedCourses() {
-        return createdCourses;
-    }
-
-    public void createCourse(int courseID, String courseTitle, int CourseDuration ) {
-    Course newCourse = new Course(courseID, courseTitle, CourseDuration);
-    createdCourses.add(newCourse);
-    System.out.println("Course created successfully: " + newCourse.getCourseTitle());
-    }
-
-    public Role getRole(){
-        return Role.Instructor;
     }
 }
