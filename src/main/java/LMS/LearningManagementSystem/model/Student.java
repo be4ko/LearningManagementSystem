@@ -1,11 +1,15 @@
 package LMS.LearningManagementSystem.model;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "students")
 public class Student extends User{
+    @OneToMany(mappedBy = "student")
+    private List<Attendance> attendances = new ArrayList<>();
+    
     @ManyToMany
     @JoinTable(
             name = "student_courses",

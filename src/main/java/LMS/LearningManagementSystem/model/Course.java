@@ -20,10 +20,12 @@ public class Course {
     @Column(nullable = true) // Ensure course name cannot be null
     protected int courseDuration;
 
-    @ManyToOne // Each course is associated with one instructor
-    @JoinColumn(name = "instructor_id") // Foreign key in the courses table
-    private Instructor instructor;
+    @OneToMany(mappedBy = "courses",cascade = CascadeType.ALL)
+    private List<Lesson> lessons = new ArrayList<>();
 
+    @ManyToOne // Each course is associated with one instructor
+    @JoinColumn(name = "instructor_id",nullable =false) // Foreign key in the courses table
+    private Instructor instructor;
 
     @ManyToMany(mappedBy = "courses")
     private List<Student> enrolledStudents = new ArrayList<>();
