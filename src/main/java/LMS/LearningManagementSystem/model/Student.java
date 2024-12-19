@@ -1,8 +1,8 @@
 package LMS.LearningManagementSystem.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Null;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -10,9 +10,11 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@SuperBuilder // Use @SuperBuilder for inherited fields
 @Table(name = "students")
 public class Student extends User {
     @ManyToMany
@@ -23,6 +25,7 @@ public class Student extends User {
     )
     private List<Course> courses;
     @Enumerated(EnumType.STRING)
+    @Null
     private Role role ;
 
     public Student(int id, String name, String email, String password) {
@@ -38,7 +41,7 @@ public class Student extends User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of();
     }
     /*
     @Override

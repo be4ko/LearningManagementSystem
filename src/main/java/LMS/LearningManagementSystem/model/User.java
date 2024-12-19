@@ -2,6 +2,7 @@ package LMS.LearningManagementSystem.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,37 +10,23 @@ import java.util.Collection;
 
 @Getter
 @MappedSuperclass
-@Data
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-abstract class User implements UserDetails {
+@SuperBuilder
+public abstract class User implements UserDetails {
    @Id
 //   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
+    @Setter
+    @Column(nullable = true)
     private String name;
+    @Setter
     @Column(nullable = false, unique = true)
     private String email;
+    @Setter
     @Column(nullable = false)
     private String password;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
     @Override
     public String getUsername() {
         return getEmail();
