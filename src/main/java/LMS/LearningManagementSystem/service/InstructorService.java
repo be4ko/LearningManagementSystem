@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InstrutorService {
+public class InstructorService {
     private final InsturctorRepository insturctorRepository;
 
     @Autowired
-    public InstrutorService(InsturctorRepository insturctorRepository){
+    public InstructorService(InsturctorRepository insturctorRepository){
         this.insturctorRepository = insturctorRepository;
     }
 
