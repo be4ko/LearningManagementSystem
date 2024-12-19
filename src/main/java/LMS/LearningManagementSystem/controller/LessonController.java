@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import LMS.LearningManagementSystem.model.Lesson;
 import LMS.LearningManagementSystem.service.LessonService;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -29,7 +31,7 @@ public class LessonController {
         return this.lessonService.createLesson(courseId, title);
     }
 
-    @PostMapping("/generateOtp")
+    @GetMapping("/generateOtp")
     public int generateOtp(@RequestParam int courseId) {
         return this.lessonService.generateOtp(courseId);
     }
