@@ -4,7 +4,7 @@ import LMS.LearningManagementSystem.model.Course;
 import LMS.LearningManagementSystem.model.Instructor;
 import LMS.LearningManagementSystem.repository.InsturctorRepository;
 import LMS.LearningManagementSystem.repository.CourseRepository;
-import LMS.LearningManagementSystem.service.InstrutorService;
+import LMS.LearningManagementSystem.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +13,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/instructor")
 public class InstructorController {
-    protected final InstrutorService instrutorService;
+    protected final InstructorService instrutorService;
     protected final InsturctorRepository insturctorRepository;
     protected final CourseRepository  courseRepository;
 
     @Autowired
-    InstructorController(InstrutorService instrutorService, InsturctorRepository insturctorRepository , CourseRepository  courseRepository ){
+    InstructorController(InstructorService instrutorService, InsturctorRepository insturctorRepository , CourseRepository  courseRepository ){
         this.instrutorService = instrutorService;
         this.insturctorRepository = insturctorRepository;
         this.courseRepository = courseRepository;
