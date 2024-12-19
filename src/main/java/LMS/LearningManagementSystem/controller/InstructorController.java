@@ -25,7 +25,7 @@ public class InstructorController {
     }
 
     @PostMapping(path = "/create-course")
-    public String createCourse(@RequestParam int instructorId, @RequestParam int courseId , @RequestParam String courseTitle , @RequestParam int courseDuration )
+    public String createCourse(@RequestParam int instructorId, @RequestParam int courseId , @RequestParam String courseTitle ,@RequestParam String courseDescription , @RequestParam int courseDuration )
     {
         Optional<Instructor> instructorOptional = insturctorRepository.findById(instructorId);
 
@@ -35,7 +35,7 @@ public class InstructorController {
 
         Instructor instructor = instructorOptional.get();
 
-        Course course = new Course(courseId, courseTitle, courseDuration);
+        Course course = new Course(courseId, courseTitle,courseDescription, courseDuration,instructor);
         course.setInstructor(instructor);
 
         courseRepository.save(course);

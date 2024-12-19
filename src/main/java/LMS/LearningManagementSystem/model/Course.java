@@ -1,14 +1,21 @@
 package LMS.LearningManagementSystem.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "courses")
 public class Course {
     @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int courseID;
     @Column(nullable = false) // Ensure course name cannot be null
     protected String courseTitle;
+
+    @Column(nullable = true) // Ensure course name cannot be null
+    protected String courseDescription;
 
     @Column(nullable = true) // Ensure course name cannot be null
     protected int courseDuration;
@@ -18,41 +25,67 @@ public class Course {
     private Instructor instructor;
 
 
-    public Course(int courseID, String courseTitle, int courseDuration ){
-        this.courseID = courseID;
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> enrolledStudents = new ArrayList<>();
+
+
+    public Course(int id,String courseTitle, String courseDescription, int courseDuration,Instructor instructor) {
+        this.courseID=id;
         this.courseTitle = courseTitle;
-        this.courseDuration = courseDuration ;
+        this.courseDescription = courseDescription;
+        this.courseDuration = courseDuration;
+        this.instructor=instructor;
     }
 
     protected Course() {
 
     }
 
-    public void setCourseDuration(int courseDuration) {
-        this.courseDuration = courseDuration;
+
+    public int getCourseID() {
+        return this.courseID;
     }
 
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
+
+
+    public String getCourseTitle() {
+        return this.courseTitle;
     }
 
     public void setCourseTitle(String courseTitle) {
         this.courseTitle = courseTitle;
     }
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
+    public String getCourseDescription() {
+        return this.courseDescription;
+    }
+
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription;
     }
 
     public int getCourseDuration() {
-        return courseDuration;
+        return this.courseDuration;
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
+    public void setCourseDuration(int courseDuration) {
+        this.courseDuration = courseDuration;
     }
 
-    public int getCourseID() {
-        return courseID;
+    public Instructor getInstructor() {
+        return this.instructor;
     }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public List<Student> getEnrolledStudents() {
+        return this.enrolledStudents;
+    }
+
+    public void setEnrolledStudents(List<Student> enrolledStudents) {
+        this.enrolledStudents = enrolledStudents;
+    }
+    
 }

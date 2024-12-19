@@ -19,4 +19,5 @@ public class Instructor extends User{
         super();
         this.createdCourses = new ArrayList<>();
     }
+    
 }
