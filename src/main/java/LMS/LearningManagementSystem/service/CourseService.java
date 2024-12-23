@@ -44,4 +44,14 @@ public class CourseService {
         return course.getEnrolledStudents();
     }
 
+
+
+    public Course addMediaToCourse(int courseId, List<String> mediaUrls) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found with ID: " + courseId));
+
+        course.getMediaFiles().addAll(mediaUrls);
+        return courseRepository.save(course);
+    }
+
 }

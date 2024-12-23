@@ -31,6 +31,12 @@ public class Course {
     private List<Student> enrolledStudents = new ArrayList<>();
 
 
+    @ElementCollection
+    @CollectionTable(name = "course_media", joinColumns = @JoinColumn(name = "course_id"))
+    @Column(name = "media_url")
+    private List<String> mediaFiles = new ArrayList<>();
+
+
     public Course(int id,String courseTitle, String courseDescription, int courseDuration,Instructor instructor) {
         this.courseID=id;
         this.courseTitle = courseTitle;
@@ -90,4 +96,7 @@ public class Course {
         this.enrolledStudents = enrolledStudents;
     }
     
+    public List<String> getMediaFiles(){
+        return this.mediaFiles;
+    }
 }
