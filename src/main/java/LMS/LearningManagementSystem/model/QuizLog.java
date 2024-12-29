@@ -1,37 +1,47 @@
 package LMS.LearningManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "quizLogs")
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class QuizLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    private Integer studentId;
+    private Date attemptDate;
+    private int score;
+    private String feedback;
 
-    private Integer quizId;
-
-    private Integer grade;
-
-    private String dateOfSubmission;
-
-    @ManyToOne
-    @JoinColumn(name = "quiz_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
-    // Constructors
-    public QuizLog() {}
 
-    public QuizLog(Integer studentId, Integer quizId, Integer grade, String dateOfSubmission) {
-        this.studentId = studentId;
-        this.quizId = quizId;
-        this.grade = grade;
-        this.dateOfSubmission = dateOfSubmission;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
-    // Getters and Setters
+    @ElementCollection
+    private List<String> studentAnswers;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "quizlog_questions",
+            joinColumns = @JoinColumn(name = "quizlog_id"), // Referencing the QuizLog ID here
+            inverseJoinColumns = @JoinColumn(name = "question_id")
+    )
+    @JsonManagedReference
+    private List<Question> questions;
 }

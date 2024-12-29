@@ -15,8 +15,8 @@ import java.util.Collection;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class User implements UserDetails {
-   @Id
-//   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Setter
     @Column(nullable = true)
@@ -27,6 +27,13 @@ public abstract class User implements UserDetails {
     @Setter
     @Column(nullable = false)
     private String password;
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return getEmail();

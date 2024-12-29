@@ -1,37 +1,35 @@
 package LMS.LearningManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-@Entity
-@Table(name = "quizes")
-public class Quiz {
 
+@Entity
+@Table(name = "quizzes")
+public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer courseId;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    @JsonBackReference
+    private Course course;
 
-    private String quizTitle;
+    private String title; // Quiz title
+    private Integer totalGrade; // Total score for the quiz
+    private Integer numberOfQuestions;
 
-    @ElementCollection
-    @CollectionTable(name = "quiz_questions", joinColumns = @JoinColumn(name = "quiz_id"))
-    private List<Question> quizQuestions;
 
-    private Integer totalGrade;
 
-    // Constructors
-    public Quiz() {}
-
-    public Quiz(Integer courseId, String quizTitle, List<Question> quizQuestions, Integer totalGrade) {
-        this.courseId = courseId;
-        this.quizTitle = quizTitle;
-        this.quizQuestions = quizQuestions;
-        this.totalGrade = totalGrade;
-    }
 
     // Getters and Setters
+
     public Integer getId() {
         return id;
     }
@@ -40,30 +38,22 @@ public class Quiz {
         this.id = id;
     }
 
-    public Integer getCourseId() {
-        return courseId;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public String getQuizTitle() {
-        return quizTitle;
+    public Integer getNumberOfQuestions() {
+        return numberOfQuestions;
     }
 
-    public void setQuizTitle(String quizTitle) {
-        this.quizTitle = quizTitle;
-    }
+    public void setNumberOfQuestions(Integer numberOfQuestions) {
+        this.numberOfQuestions = numberOfQuestions;
 
-    public List<Question> getQuizQuestions() {
-        return quizQuestions;
     }
-
-    public void setQuizQuestions(List<Question> quizQuestions) {
-        this.quizQuestions = quizQuestions;
-    }
-
     public Integer getTotalGrade() {
         return totalGrade;
     }
@@ -72,43 +62,12 @@ public class Quiz {
         this.totalGrade = totalGrade;
     }
 
-    public static class Question {
-        private String title;
-        private String rightAnswer;
-        private Integer grade;
-
-        // Constructors
-        public Question() {}
-
-        public Question(String title, String rightAnswer, Integer grade) {
-            this.title = title;
-            this.rightAnswer = rightAnswer;
-            this.grade = grade;
-        }
-
-        // Getters and Setters
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getRightAnswer() {
-            return rightAnswer;
-        }
-
-        public void setRightAnswer(String rightAnswer) {
-            this.rightAnswer = rightAnswer;
-        }
-
-        public Integer getGrade() {
-            return grade;
-        }
-
-        public void setGrade(Integer grade) {
-            this.grade = grade;
-        }
+    public String getTitle() {
+        return title;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 }

@@ -1,34 +1,39 @@
 package LMS.LearningManagementSystem.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "assignmentLogs")
+@Table(name = "assignment_Logs")
+@Getter
+@Setter
 public class AssignmentLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     private Integer studentId;
 
-    private Integer assignmentId;
+//    @JoinColumn(name = "assignment_Id")
+//    private Integer assignmentId;
 
     private String answeredPdfPath;
 
     // Change from primitive Integer to Integer to allow null values
-    private Integer grade; 
+    private Integer grade;
 
     @ManyToOne
-    @JoinColumn(name = "assignment_id", insertable = false, updatable = false)
+    @JoinColumn(name = "assignment_Id")
     private Assignment assignment;
 
     // Constructors
     public AssignmentLog() {}
 
-    public AssignmentLog(Integer studentId, Integer assignmentId, String answeredPdfPath, Integer grade) {
+    public AssignmentLog(Integer studentId, String answeredPdfPath, Integer grade) {
         this.studentId = studentId;
-        this.assignmentId = assignmentId;
         this.answeredPdfPath = answeredPdfPath;
         this.grade = grade;
     }
@@ -49,15 +54,15 @@ public class AssignmentLog {
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
-   
 
-    public Integer getAssignmentId() {
-        return assignmentId;
-    }
 
-    public void setAssignmentId(Integer assignmentId) {
-        this.assignmentId = assignmentId;
-    }
+//    public Integer getAssignmentId() {
+//        return assignmentId;
+//    }
+//
+//    public void setAssignmentId(Integer assignmentId) {
+//        this.assignmentId = assignmentId;
+//    }
 
     public String getAnsweredPdfPath() {
         return answeredPdfPath;

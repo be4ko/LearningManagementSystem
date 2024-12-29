@@ -3,21 +3,34 @@ package LMS.LearningManagementSystem.service;
 
 import LMS.LearningManagementSystem.model.Assignment;
 import LMS.LearningManagementSystem.model.AssignmentLog;
+import LMS.LearningManagementSystem.model.Course;
+import LMS.LearningManagementSystem.model.Role;
 import LMS.LearningManagementSystem.repository.AssignmentRepository;
 import LMS.LearningManagementSystem.repository.AssignmentLogRepository;
+import LMS.LearningManagementSystem.repository.CourseRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AssignmentService {
+    protected final CourseRepository courseRepository;
 
     @Autowired
     private AssignmentRepository assignmentRepository;
+    private NotificationService notificationService;
+    protected final AssignmentLogRepository assignmentLogRepository;
 
-    @Autowired
-    private AssignmentLogRepository assignmentLogRepository;
+    public AssignmentService(AssignmentLogRepository assignmentLogRepository, CourseRepository courseRepository , NotificationService notificationService , AssignmentRepository assignmentRepository) {
+        this.assignmentLogRepository = assignmentLogRepository;
+        this.courseRepository = courseRepository;
+        this.notificationService = notificationService;
+        this.assignmentRepository = assignmentRepository;
+    }
 
     public Assignment addAssignment(Assignment assignment) {
         return assignmentRepository.save(assignment);
@@ -46,6 +59,27 @@ public class AssignmentService {
         assignmentLogRepository.save(log);
     }
 
+    public void create_assignment(Assignment assignment, int instructorId) throws Exception {
+        if(courseRepository.findById(assignment.getCourseId()).get().getInstructor().getId() != instructorId)
+            throw new Exception("Instructor doesn't have permission");
+        else
+            assignmentRepository.save(assignment);
+    }
+
+    public List<Integer> track_assignmentSubmissions(int assignmentId, int instructorId) throws Exception {
+        if(courseRepository.findById(assignmentRepository.findById(assignmentId).get().getCourseId()).get().getInstructor().getId() != instructorId) {
+            throw new Exception("not permission");
+        }
+        List<AssignmentLog> assignmentLogs = assignmentLogRepository.findAll().stream()
+                .filter(log -> log.getAssignment().getId().equals(assignmentId))
+                .toList();
+
+        // Return the list of grades
+        return assignmentLogs.stream().map(AssignmentLog::getGrade) // Assuming AssignmentLog has a getGrade() method
+                .collect(Collectors.toList());
+
+    }
+
     public List<AssignmentLog> viewAllAssignmentLogs() {
         return assignmentLogRepository.findAll();
     }
@@ -70,8 +104,13 @@ public class AssignmentService {
 
     public void correctAssignmentLog(Integer assignmentLogId, Integer grade) {
         AssignmentLog log = assignmentLogRepository.findById(assignmentLogId).orElseThrow();
+        Course crs=courseRepository.findById(log.getAssignment().getCourseId()).orElseThrow();
         log.setGrade(grade);
         assignmentLogRepository.save(log);
+        // Notify the student about the graded assignment
+        String message = "Your assignment for course with ID : " + crs.getCourseTitle() +
+                " has been graded. Your grade is: " + grade + ".";
+        notificationService.createNotification(log.getStudentId(), Role.Student, message);
     }
 
     private Integer extractStudentIdFromToken(String token) {

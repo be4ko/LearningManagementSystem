@@ -1,4 +1,4 @@
-package LMS.LearningManagementSystem.controller;
+/*package LMS.LearningManagementSystem.controller;
 
 import LMS.LearningManagementSystem.model.Quiz;
 import LMS.LearningManagementSystem.model.QuizLog;
@@ -49,4 +49,4 @@ public class QuizController {
     public void deleteQuizLog(@PathVariable Integer quizLogId) {
         quizService.deleteQuizLog(quizLogId);
     }
-}
+}*/

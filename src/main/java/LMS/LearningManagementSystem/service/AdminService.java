@@ -1,6 +1,7 @@
 package LMS.LearningManagementSystem.service;
 
 import LMS.LearningManagementSystem.model.Course;
+import LMS.LearningManagementSystem.model.Role;
 import LMS.LearningManagementSystem.model.Student;
 import LMS.LearningManagementSystem.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.*;
@@ -12,13 +13,13 @@ public class AdminService {
     private StudentRepository studentRepository;
 
     @Autowired
-    AdminService(StudentRepository studentRepository)
+    public AdminService(StudentRepository studentRepository)
     {
         this.studentRepository = studentRepository;
     }
 
-    public void addStudent(int id, String name, String email, String password) {
-        Student newStudent = new Student(id, name, email, password);
+    public void addStudent(String name, String email, String password) {
+        Student newStudent = new Student (name, email, password, Role.Student);
         studentRepository.save(newStudent); // Save the student to the database
         System.out.println("Student Added Successfully");
     }

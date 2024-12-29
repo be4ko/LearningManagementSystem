@@ -25,11 +25,11 @@ public class Student extends User {
     )
     private List<Course> courses;
     @Enumerated(EnumType.STRING)
-    @Null
     private Role role ;
 
-    public Student(int id, String name, String email, String password) {
-        super(id, name, email, password);
+    public Student(String name, String email, String password,Role role) {
+        super(name, email, password);
+        this.role = Role.Student;
     }
 
     public void addCourse(Course course){                    // يجب التعديل بعد إضافة كلاس الكورس
@@ -41,6 +41,7 @@ public class Student extends User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of();
     }
     /*

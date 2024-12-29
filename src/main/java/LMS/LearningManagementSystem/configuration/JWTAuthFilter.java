@@ -1,6 +1,6 @@
 package LMS.LearningManagementSystem.configuration;
 
-import LMS.LearningManagementSystem.service.JWTServices;
+import LMS.LearningManagementSystem.service.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,10 +17,15 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-@RequiredArgsConstructor
 public class JWTAuthFilter extends OncePerRequestFilter {
-    private JWTServices jwtServices;
+    private final JWTService jwtServices;
     private final UserDetailsService userDetailsService;
+
+    public JWTAuthFilter(JWTService jwtServices, UserDetailsService userDetailsService) {
+        this.jwtServices = jwtServices;
+        this.userDetailsService = userDetailsService;
+    }
+
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {

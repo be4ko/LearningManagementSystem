@@ -9,12 +9,8 @@ import java.util.List;
 
 @Configuration
 public class StudentConfig {
-    @Bean (name = "studentCommandLineRunner")
+    @Bean
     CommandLineRunner commandLineRunner(StudentRepository repository){
-        return args -> {
-                Student beeko = new Student(2020,"Beeko","beeko280@gmail","123123");
-                Student ahmed = new Student(2021,"Ahmed","ahmed@gmail","123123");
-                repository.saveAll(List.of(beeko,ahmed));
-        };
+        return args -> {};
     }
 }

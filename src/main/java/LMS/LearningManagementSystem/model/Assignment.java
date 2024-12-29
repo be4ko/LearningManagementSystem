@@ -10,6 +10,7 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JoinColumn(name = "course_id" , nullable = false)
     private Integer courseId;
 
     private String pdfPath;
@@ -57,5 +58,5 @@ public class Assignment {
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
-    
+
 }

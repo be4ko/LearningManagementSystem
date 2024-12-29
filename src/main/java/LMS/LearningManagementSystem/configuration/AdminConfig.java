@@ -12,10 +12,6 @@ import java.util.List;
 public class AdminConfig {
     @Bean (name = "adminCommandLineRunner")
     CommandLineRunner commandLineRunner(AdminRepository repository){
-        return args -> {
-            Admin Ehab = new Admin(985,"Ehab","Basher280@gmail","123123");
-            Admin Reda = new Admin(65,"Reda","Lamia@gmail","123123");
-            repository.saveAll(List.of(Ehab,Reda));
-        };
+        return args -> {};
     }
 }
